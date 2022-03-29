@@ -122,10 +122,15 @@ function printAllSongs() {
     for (let hitTitle in beyonceHash.hits) {
         console.log(`${ hitTitle }: ${ beyonceHash.hits[ hitTitle ].title }`);
 
-    }
+    };
 
     // 2. Print all the movies
-    function printAllMovies() {}
+    function printAllMovies() {
+        for (let movieTitle in beyonceHash.movies) {
+            console.log(`${ movieTitle }: ${ beyonceHash.movies[ movieTitle ].title }`);
+
+        };
+    }
 
     // 3. Return an array of all Beyonce's hit song titles
     function hitSongTitles() {}
