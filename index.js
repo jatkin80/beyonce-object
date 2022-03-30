@@ -70,7 +70,7 @@ const beyonceHash = {
             fierceness: 9,
             formation: false,
             dancers: 0
-        }
+        },
     ],
     movies: [{
             title: 'Austin Power\'s Goldmember',
@@ -157,14 +157,10 @@ function songsWithBodySuits() {
 
 }
 
-
-
-
 // 6. Return an array with all of the songs where Beyonce's fierceness is greater than or equal to a given number
 function getSongsByFiercenessGTE(number) {
 
     const fierceGTE = beySongs.filter(hit => hit.fierceness > number)
-
     return fierceGTE
 
 }
@@ -174,7 +170,8 @@ function getMoviesByDateGTE(year) {
 }
 // 8. Return all hit songs where Beyonce was in a group
 function groupHits() {
-    return beySongs.filter(hit => hit.group_name != 'none')
+
+    return beySongs.filter(hit => hit.group === true)
 }
 
 // 9. Return a hit song where Beyonce's hair is blonde
@@ -188,7 +185,7 @@ function sorry() {
 
 // 11. Return a given song
 function getSong(song) {
-    return beySongs.find(hit => hit.title === song)
+    return beySongs.filter(hit => hit.title === song)
 }
 
 // 12. Return all hit songs where Beyonce's fierceness rating is 10
@@ -243,47 +240,56 @@ function hitDancerSum() {
 
 // 18. Return an array of Beyonce's hairstyles without repeats
 function uniqueHairstyles() {
-    const beyHair = beySongs.map(hit => hit.hair)
-    const allHair = beyHair.concat
+    return [...new Set(beySongs.map(hit => hit.hair).reduce((array, hair) => array.concat(hair), []))]
+
 }
 
 // 19. Return an object where the properties are song names and the value is an object which contains that song's fierceness and the average fierceness for all songs
 function songFiercenessByName() {
-    return beyonceHash.hits
-        .map(hit => {
-            return {
-                title: hit.title,
+    return beySongs.reduce((hitObject, hit) => {
+        return {
+            ...hitObject,
+            [hit.title]: {
                 fierceness: hit.fierceness,
-                average_fierceness: hitFiercenessAverage(),
+                average_fierceness: hitFiercenessAverage()
             }
-        })
-        .reduce((songsByName, hit) => {
-            let fierceness = {
-                ...songsByName,
-                [hit.title]: hit,
-
-            }
-            delete hit.title;
-            return fierceness;
-        });
+        }
+    })
 }
-
 // 20. Return an object where the properties are movie names and the value is an object which contains that movie's rating and the average rating for all movies
-function movieRatingsByName() {}
-
+function movieRatingsByName() {
+    return beyMovies.reduce((movieObject, movie) => {
+        return {
+            ...movieObject,
+            [movie.title]: {
+                rating: movie.rating,
+                average_rating: ratingAverage()
+            }
+        }
+    })
+}
 
 // 21. Return an object with Beyonce's hairstyles as the keys and a tally of each hairstyle, eg. ` {
-"blonde": 3,
-...
+
+function hairStyleFrequency() {
+    return uniqueHairstyles().reduce((hairObject, hair) => {
+        return {
+            ...hairObject,
+            [hair]: beySongs.map(hit => hit.hair).flat().filter(hairstyle => hairstyle === hair).length
+
+
+        }
+    }, {})
+
 }
-`
-function hairStyleFrequency() {};
+
+
 
 
 // Testing
 
 // 1.
-printAllSongs()
+//printAllSongs()
 
 // 2.
 // printAllMovies(beyonceHash)
