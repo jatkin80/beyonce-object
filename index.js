@@ -142,25 +142,32 @@ function hitSongTitles() {
 // 4. Return an array of all Beyonce's fierceness ratings
 function allFiercenessRatings() {
 
-    return beySongs.map(hit => hit.fierceness)
+    const fierceBey = beySongs.map(hit => hit.fierceness)
+    return fierceBey
+
 }
 
 // 5. Return all the songs where Beyonce is wearing a bodysuit or a bodysuit is part of the video theme
 function songsWithBodySuits() {
-    (let in beyonceHash.hits)
-    if (beyonceHash.hits.filter(hit => hit.signature_look.includes('bodysuit') || hit.video_theme.includes('bodysuit'))) {
-        return (`${ hitSong }:${ beyonceHash.hits[ hitSong ].title }`)
-    }
-}
-array.forEach(element => {
 
-});
+    const beyBody = hitSongTitles().filter(hit => hit.signature_look.includes('bodysuit') || hit.video_theme.includes('bodysuit'))
+
+    return beyBody.map(hit => hit.title)
+
+
+}
+
+
+
 
 // 6. Return an array with all of the songs where Beyonce's fierceness is greater than or equal to a given number
 function getSongsByFiercenessGTE(number) {
-    return beySongs.filter(hit => hit.fierceness >= number)
-}
 
+    const fierceGTE = beySongs.filter(hit => hit.fierceness > number)
+
+    return fierceGTE
+
+}
 // 7. Return an array with all of the movies Beyonce made after or during a given year
 function getMoviesByDateGTE(year) {
     return beyMovies.filter(movie => movie.year >= year)
@@ -235,7 +242,10 @@ function hitDancerSum() {
 }
 
 // 18. Return an array of Beyonce's hairstyles without repeats
-function uniqueHairstyles() {}
+function uniqueHairstyles() {
+    const beyHair = beySongs.map(hit => hit.hair)
+    const allHair = beyHair.concat
+}
 
 // 19. Return an object where the properties are song names and the value is an object which contains that song's fierceness and the average fierceness for all songs
 function songFiercenessByName() {
@@ -262,7 +272,11 @@ function songFiercenessByName() {
 function movieRatingsByName() {}
 
 
-// 21. Return an object with Beyonce's hairstyles as the keys and a tally of each hairstyle, eg. `{ "blonde": 3, ... }`
+// 21. Return an object with Beyonce's hairstyles as the keys and a tally of each hairstyle, eg. ` {
+"blonde": 3,
+...
+}
+`
 function hairStyleFrequency() {};
 
 
