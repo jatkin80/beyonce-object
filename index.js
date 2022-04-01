@@ -120,37 +120,32 @@ const beyMovies = beyonceHash.movies;
 
 // 1. Print all the songs
 function printAllSongs() {
-    let allSongs = beySongs.map(hit => hit.title)
-    console.log(`${allSongs}`)
+    console.log(beySongs)
 }
 
 // 2. Print all the movies
 function printAllMovies() {
-    let allMovies = beyMovies.map(movie => movie.title)
-    console.log(`${allMovies}`)
+    console.log(beyMovies)
 }
 
 // 3. Return an array of all Beyonce's hit song titles
 function hitSongTitles() {
-    return beySongs
+    return beySongs.map(hit => hit.title)
 }
 
 // 4. Return an array of all Beyonce's fierceness ratings
 function allFiercenessRatings() {
-    const fierceBey = beySongs.map(hit => hit.fierceness)
-    return fierceBey
+    return beySongs.map(hit => hit.fierceness)
 }
 
 // 5. Return all the songs where Beyonce is wearing a bodysuit or a bodysuit is part of the video theme
 function songsWithBodySuits() {
-    const beyBody = hitSongTitles().filter(hit => hit.signature_look.includes('bodysuit') || hit.video_theme.includes('bodysuit'))
-    return beyBody.map(hit => hit.title)
+    return beySongs.filter(hit => hit.signature_look.includes('bodysuit') || hit.video_theme.includes('bodysuit')).map(hit => hit.title)
 }
 
 // 6. Return an array with all of the songs where Beyonce's fierceness is greater than or equal to a given number
 function getSongsByFiercenessGTE(number) {
-    const fierceGTE = beySongs.filter(hit => hit.fierceness > number)
-    return fierceGTE
+    return beySongs.filter(hit => hit.fierceness > number)
 }
 
 // 7. Return an array with all of the movies Beyonce made after or during a given year
@@ -185,41 +180,33 @@ function fiercestHits() {
 
 // 13. Return the sum of Beyonce's fierceness value for all of her hit songs
 function hitFiercenessSum() {
-    let fierceSum = beySongs.map(hit => hit.fierceness)
-    const sum = fierceSum.reduce((accumulator, currentValue) => {
-        return accumulator + currentValue
+    return beySongs.map(hit => hit.fierceness).reduce((acc, curVal) => {
+        return acc + curVal
     })
-    return sum
 }
 
 // 14. Return the average fierceness value for all Beyonce's hit songs
 function hitFiercenessAverage() {
-    let fierceSum = beySongs.map(hit => hit.fierceness)
-    return hitFiercenessSum() / fierceSum.length
+    return hitFiercenessSum() / allFiercenessRatings().length
 }
 
 // 15. Return the sum of Beyonce's rating value for all of her movies
 function ratingSum() {
-    let rateSum = beyMovies.map(movie => movie.rating)
-    const sum = rateSum.reduce((accumulator, currentValue) => {
-        return accumulator + currentValue
+    return beyMovies.map(movie => movie.rating).reduce((acc, curVal) => {
+        return acc + curVal
     })
-    return sum
 }
 
 // 16. Return the average rating value for all of her movies
 function ratingAverage() {
-    let rateSum = beyMovies.map(movie => movie.rating)
-    return ratingSum() / rateSum.length
+    return ratingSum() / beyMovies.length
 }
 
 // 17. Return the sum of the total number of dancers in all of the hit song videos
 function hitDancerSum() {
-    let dancerSum = beySongs.map(hit => hit.dancers)
-    const sum = dancerSum.reduce((accumulator, currentValue) => {
-        return accumulator + currentValue
+    return beySongs.map(hit => hit.dancers).reduce((acc, curVal) => {
+        return acc + curVal
     })
-    return sum
 }
 
 // 18. Return an array of Beyonce's hairstyles without repeats
