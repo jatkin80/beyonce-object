@@ -120,12 +120,12 @@ const beyMovies = beyonceHash.movies;
 
 // 1. Print all the songs
 function printAllSongs() {
-    console.log(beySongs)
+    beySongs.forEach((hit) => console.log(hit.title))
 }
 
 // 2. Print all the movies
 function printAllMovies() {
-    console.log(beyMovies)
+    beyMovies.forEach((movie) => console.log(movie.title))
 }
 
 // 3. Return an array of all Beyonce's hit song titles
