@@ -180,8 +180,8 @@ function fiercestHits() {
 
 // 13. Return the sum of Beyonce's fierceness value for all of her hit songs
 function hitFiercenessSum() {
-    return beySongs.map(hit => hit.fierceness).reduce((acc, curVal) => {
-        return acc + curVal
+    return beySongs.map(hit => hit.fierceness).reduce((acc, obj) => {
+        return acc + obj
     })
 }
 
@@ -192,8 +192,8 @@ function hitFiercenessAverage() {
 
 // 15. Return the sum of Beyonce's rating value for all of her movies
 function ratingSum() {
-    return beyMovies.map(movie => movie.rating).reduce((acc, curVal) => {
-        return acc + curVal
+    return beyMovies.map(movie => movie.rating).reduce((acc, obj) => {
+        return acc + obj
     })
 }
 
@@ -204,8 +204,8 @@ function ratingAverage() {
 
 // 17. Return the sum of the total number of dancers in all of the hit song videos
 function hitDancerSum() {
-    return beySongs.map(hit => hit.dancers).reduce((acc, curVal) => {
-        return acc + curVal
+    return beySongs.map(hit => hit.dancers).reduce((acc, obj) => {
+        return acc + obj
     })
 }
 
