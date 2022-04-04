@@ -180,8 +180,8 @@ function fiercestHits() {
 
 // 13. Return the sum of Beyonce's fierceness value for all of her hit songs
 function hitFiercenessSum() {
-    return beySongs.map(hit => hit.fierceness).reduce((acc, obj) => {
-        return acc + obj
+    return beySongs.map(hit => hit.fierceness).reduce((songs, song) => {
+        return songs + song
     })
 }
 
@@ -192,8 +192,8 @@ function hitFiercenessAverage() {
 
 // 15. Return the sum of Beyonce's rating value for all of her movies
 function ratingSum() {
-    return beyMovies.map(movie => movie.rating).reduce((acc, obj) => {
-        return acc + obj
+    return beyMovies.map(movie => movie.rating).reduce((movies, movie) => {
+        return movies + movie
     })
 }
 
@@ -204,14 +204,14 @@ function ratingAverage() {
 
 // 17. Return the sum of the total number of dancers in all of the hit song videos
 function hitDancerSum() {
-    return beySongs.map(hit => hit.dancers).reduce((acc, obj) => {
-        return acc + obj
+    return beySongs.map(hit => hit.dancers).reduce((songs, song) => {
+        return songs + song
     })
 }
 
 // 18. Return an array of Beyonce's hairstyles without repeats
 function uniqueHairstyles() {
-    return [...new Set(beySongs.map(hit => hit.hair).reduce((array, hair) => array.concat(hair), []))]
+    return [...new Set(beySongs.map(hit => hit.hair).reduce((hairStyle, hair) => hairStyle.concat(hair), []))]
 }
 
 // 19. Return an object where the properties are song names and the value is an object which contains that song's fierceness and the average fierceness for all songs
@@ -229,9 +229,9 @@ function songFiercenessByName() {
 
 // 20. Return an object where the properties are movie names and the value is an object which contains that movie's rating and the average rating for all movies
 function movieRatingsByName() {
-    return beyMovies.reduce((movieObject, movie) => {
+    return beyMovies.reduce((movies, movie) => {
         return {
-            ...movieObject,
+            ...movies,
             [movie.title]: {
                 rating: movie.rating,
                 average_rating: ratingAverage()
@@ -242,10 +242,10 @@ function movieRatingsByName() {
 
 // 21. Return an object with Beyonce's hairstyles as the keys and a tally of each hairstyle, eg. ` {
 function hairStyleFrequency() {
-    return uniqueHairstyles().reduce((hairObject, hair) => {
+    return uniqueHairstyles().reduce((hair, hairStyle) => {
         return {
-            ...hairObject,
-            [hair]: beySongs.map(hit => hit.hair).flat().filter(hairstyle => hairstyle === hair).length
+            ...hair,
+            [hairStyle]: beySongs.map(hit => hit.hair).flat().filter(hairstyle => hairstyle === hairStyle).length
         }
     }, {})
 }

@@ -1,6 +1,8 @@
 # Beyonce Objects
 
+
 Beyonce is from Satan, and I can never listen to her ever. ever. ever. again.
+
 
 In `index.js`, write functions that do the following:
 
